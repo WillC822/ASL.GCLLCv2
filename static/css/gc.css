@@ -1,0 +1,107 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@font-face{
+	font-family:'Abel', 'Times New Roman', 'Georgia','Raleway';
+}
+
+
+.header img{
+	float: left;
+	width:300px;
+	height:150px;
+	background: ;	
+	}
+
+img{
+	background-color: white;
+	border: 1px solid black;
+	margin-top: 1%;
+}
+ 
+body{
+	font-family: raleway;
+	background-color: #F0F0F0;
+	color: #00000;
+	text-align: center;
+	background-color: #858279;
+}
+
+.header h1{
+	position:relative;	
+	top:18px;
+	left:10px;
+	background-image:url("/../images.gclogo.png");
+	
+}
+
+.brand {
+    background-image:src url("/images/gclogo.png");
+}
+
+h1{
+	text-align: left;
+	width: 100%;
+	background-image:src url("/images/gclogo.png");
+	font-size: 4em;
+}
+
+nav ul{
+	border: 1px solid black;
+	text-align: right;
+	background-color: #858279;	
+}
+
+nav ul li{
+	display: inline-block;
+	margin: 5px;
+	color: black;
+	border-radius: 10%;
+	
+}
+
+#about h4{
+	width: 80%;
+	text-align: center;
+	font-size:20px;
+	padding-right: 10px;
+}
+
+.service ul li{
+	text-align: left;
+	
+}
+
+.form{
+	padding-top: 50px;
+}
+
+.section-content {
+  color: #3a3a3a;
+  float: left;
+  width: 340px;
+}
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.btn-primary {
+  background: #4285f4;
+  border: 1px solid #1266f1;
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.23px;
+  padding: 12px 32px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.signup-section .section-content {
+  position: relative;
+  top: 53px;
+}

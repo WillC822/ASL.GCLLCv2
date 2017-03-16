@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class ="container-fluid">
+		<ul class = "nav navbar-nav navbar-right">
+			<li><a href="{{ url_for('index') }}">Home</a></li>
+			<li><a href="{{ url_for('about') }}">About Us</a></li>
+			<li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+			<li><a href="{{ url_for('add') }}">Request Job</a></li>
+		</ul>
+	</div>
+
+
+	<section class="container-fluid" id="about">
+		<div class="container-fluid"><h4>How can we help?</h4>
+			<form action="" method = "post">
+				Title
+				<input type="text" name="title"/>
+				Body
+				<textarea type="text" name="body"></textarea>
+
+				<button class="button postfix" type="submit">POST</button>
+			</form>
+		</div>
+    </section>
+	<!-- Section for update -->
+	<section>
+	  {% for post in post %}
+      <div class="row">
+        <!-- Main Blog Content -->
+        <div class="large-9 columns" role="content">
+          <article>
+            <h3>{{ post.title }}</h3>
+
+            <div class="row">
+              <div class="large-6 columns">
+                <p>{{ post.body }}</p>
+                <p><a href="{{ url_for('edit', id=post.id) }}">Edit</a></p>
+			  </div>
+
+          </article>
+		</div>
+		<hr />
+
+      {% endfor %}
+	</section>
+
+{% endblock %}
+

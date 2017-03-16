@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class ="container-fluid">
+		<ul class = "nav navbar-nav navbar-right">
+			<li><a href="{{ url_for('index') }}">Home</a></li>
+			<li><a href="{{ url_for('about') }}">About Us</a></li>
+			<li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+			<li><a href="{{ url_for('add') }}">Request Job</a></li>
+		</ul>
+	</div>
+
+
+	<main class="container signup-section">
+		<div class="section-content">
+			<h2>Log In</h2>
+
+			<form method="POST" action="/login">
+				{{ form.hidden_tag() }}
+
+
+			<div class = 'form'>
+				{{ form.email.label }}
+				{{ form.email }}
+			</div>
+
+			<div class = 'form'>
+				{{ form.password.label }}
+				{{ form.password }}
+			</div>
+			</form>
+		</div>
+	</main>
+			{{ form.submit(class="btn-primary") }}
+
+{% endblock %}
+

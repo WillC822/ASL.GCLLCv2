@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class ="container-fluid">
+		<ul class = "nav navbar-nav navbar-right">
+			<li><a href="{{ url_for('index') }}">Home</a></li>
+			<li><a href="{{ url_for('about') }}">About Us</a></li>
+			<li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+			<li><a href="{{ url_for('add') }}">Request Job</a></li>
+		</ul>
+	</div>
+
+	<section class = "main-content">
+		<div class = "container row-fluid">
+		<h2>Services Offered</h2>
+			<ul>
+				<div class="span-4"><li>Logos</li><img src="static/img/logoexamples.jpg" class="img-responsive" alt="Responsive image"></div>
+				<div class="span-4"><li>Websites</li><img src="static/img/websiteexamples.jpg" class="img-responsive" alt="Responsive image"></div>
+				<div class="span-4"><li>Custom Work</li><img src="static/img/customexample.jpg" class="img-responsive" alt="Responsive image" width=100%></div>
+			</ul>
+		</div>
+	</section>
+
+		<!-- Section for update -->
+	<section>
+	  {% for post in post %}
+      <div class="row">
+        <!-- Main Blog Content -->
+        <div class="large-9 columns" role="content">
+          <article>
+            <h3>{{ post.title }}</h3>
+
+            <div class="row">
+              <div class="large-6 columns">
+                <p>{{ post.body }}</p>
+                <p><a href="{{ url_for('add', id=post.id) }}">Edit</a></p>
+			  </div>
+
+          </article>
+		</div>
+		<hr />
+
+      {% endfor %}
+	</section>
+
+ljabefa
+
+{% endblock %}
+
