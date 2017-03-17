@@ -24,11 +24,11 @@
 		<!-- Section for update -->
 	<section>
 	  {% for post in post %}
-      <div class="row">
-        <!-- Main Blog Content -->
-        <div class="large-9 columns" role="content">
-          <article>
-            <h3>{{ post.title }}</h3>
+      	<div class="row">
+			<!-- Main Blog Content -->
+        	<div class="large-9 columns" role="content">
+          		<article>
+            		<h3>{{ post.title }}</h3>
 
             <div class="row">
               <div class="large-6 columns">
@@ -38,12 +38,15 @@
 
           </article>
 		</div>
+
+		<form action="" method="post">
+
 		<hr />
 
       {% endfor %}
 	</section>
 
-ljabefa
+
 
 {% endblock %}
 

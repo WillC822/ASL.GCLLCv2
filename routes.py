@@ -11,10 +11,10 @@ db.init_app(app)
 app.secret_key = "development-key"
 
 #index page
-@app.route("/", methods=['POST'])
+@app.route("/",)
 def index():
     post = Post.query.all()  #something not right here
-    return render_template("index.html", post=post)
+    return render_template("index.html" , post=post)
 
 #about page
 @app.route("/about")
@@ -76,13 +76,13 @@ def logoout():
 #add post page
 @app.route("/add", methods=['POST', 'GET'])
 def add():
-    if request.method == 'POST':
-        post=Post(request.form['title'], request.form['body'])   # something not right here
+    if request.method == 'post':
+        post = Post(request.form['title'], request.form['body'])   # something not right here
         db.session.add(post)
         db.session.commit()
         flash('New Entry Posted Succesfully')
 
-    return render_template('add.html')
+    return render_template("add.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
