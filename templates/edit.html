@@ -13,17 +13,22 @@
 
 	<section class="container-fluid" id="about">
 		<div class="container-fluid"><h4>How can we help?</h4>
-			<form action="" method = "post">
+			<form action="/edit" method = "post">
+				<label>
 				Title
-				<input type="text" name="title"/>
+				<input type="text" name="title" value="{{post.title}}"/>
+				</label>
+				<label>
 				Body
-				<textarea type="text" name="body"></textarea>
-
-				<button class="button postfix" type="submit">POST</button>
+				<textarea type="text" name="body">{{post.body}}</textarea>
+				</label>
+				<div class="small-2 columns">
+				<button class="button postfix" type="submit">Edit</button>
+				</div>
 			</form>
 		</div>
     </section>
-	<!-- Section for update -->
+
 
 {% endblock %}
 
