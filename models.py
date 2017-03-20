@@ -34,3 +34,4 @@ class Post(db.Model):
     def __init__(self, title, body):
         self.title = title()  # something not working here
         self.body = body()  # something not working here
+

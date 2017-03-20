@@ -62,16 +62,16 @@ def login():
     elif request.method == 'GET':
             return render_template('login.html', form=form)
 
-#home page
-@app.route("/home")
-def home():
-    return render_template('home.html')
-
 #logout for session
 @app.route("/logout")
 def logoout():
     session.pop('email', None)
     return redirect(url_for('index'))
+
+#home page
+@app.route("/home")
+def home():
+    return render_template('home.html')
 
 #add post page
 @app.route("/add", methods=['POST', 'GET'])
@@ -83,6 +83,27 @@ def add():
         flash('New Entry Posted Succesfully')
 
     return render_template("add.html")
+
+#edit/update
+@app.route('/edit/<uid>', methods=['POST', 'GET'])
+def edit(uid):
+    post=Post.query.get(uid)
+    if request.method == 'POST':
+        post.title = request.form['title']
+        post.text = request.form['body']
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('edit.html', post=post)
+
+#delete
+@app.route('/delete/<uid>' ,methods=['POST', 'GET'])
+def delete(uid):
+    post = Post.query.get(uid)
+    db.session.delete(post)
+    db.session.commit()
+    flash('post deleted')
+
+    return redirect(url_for('index'))
 
 if __name__ == "__main__":
     app.run(debug=True)
