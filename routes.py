@@ -80,30 +80,30 @@ def add():
         post = Post(request.form['title'], request.form['body'])   # something not right here
         db.session.add(post)
         db.session.commit()
-        flash('New Entry Posted Succesfully')
+        flash("New Entry Posted Succesfully")
 
     return render_template("add.html")
 
 #edit/update
-@app.route('/edit/<uid>', methods=['POST', 'GET'])
+@app.route("/edit/<uid>", methods=['POST', 'GET'])
 def edit(uid):
     post=Post.query.get(uid)
     if request.method == 'POST':
         post.title = request.form['title']
         post.text = request.form['body']
         db.session.commit()
-        return redirect(url_for('index'))
-    return render_template('edit.html', post=post)
+        return redirect(url_for("index"))
+    return render_template("edit.html", post=post)
 
 #delete
-@app.route('/delete/<uid>' ,methods=['POST', 'GET'])
+@app.route("/delete/<uid>" ,methods=['POST', 'GET'])
 def delete(uid):
     post = Post.query.get(uid)
     db.session.delete(post)
     db.session.commit()
     flash('post deleted')
 
-    return redirect(url_for('index'))
+    return redirect(url_for("index"))
 
 if __name__ == "__main__":
     app.run(debug=True)
