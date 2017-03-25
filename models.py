@@ -30,6 +30,7 @@ class Post(db.Model):
     uid = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(128))
     body = db.Column(db.Text)
+    ddate = db.Column(db.Date)
 
     def __init__(self, title, body):
         self.title = title()  # something not working here

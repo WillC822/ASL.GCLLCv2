@@ -76,8 +76,8 @@ def home():
 #add post page
 @app.route("/add", methods=['POST', 'GET'])
 def add():
-    if request.method == 'post':
-        post = Post(request.form['title'], request.form['body'])   # something not right here
+    if request.method == 'POST':
+        post = Post(request.form['title'], request.form['body'], request.form['ddate'])   # something not right here
         db.session.add(post)
         db.session.commit()
         flash("New Entry Posted Succesfully")
@@ -91,6 +91,7 @@ def edit(uid):
     if request.method == 'POST':
         post.title = request.form['title']
         post.text = request.form['body']
+        post.date = request.form['ddate']
         db.session.commit()
         return redirect(url_for("index"))
     return render_template("edit.html", post=post)
