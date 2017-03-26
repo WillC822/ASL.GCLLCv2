@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 from models import db, User, Post
 from forms import SignupForm, LoginForm
+from quickstart import get_credentials, main
+
 
 
 app = Flask(__name__)
@@ -88,13 +90,13 @@ def add():
 @app.route("/edit/<uid>", methods=['POST', 'GET'])
 def edit(uid):
     post=Post.query.get(uid)
-    if request.method == 'POST':
+    if request.method == 'post':
         post.title = request.form['title']
         post.text = request.form['body']
-        post.date = request.form['ddate']
+        post.date = request.form['ddate', get_credentials()]
         db.session.commit()
         return redirect(url_for("index"))
-    return render_template("edit.html", post=post)
+    return render_template("edit.html", post=post, main=main)
 
 #delete
 @app.route("/delete/<uid>" ,methods=['POST', 'GET'])
@@ -105,6 +107,26 @@ def delete(uid):
     flash('post deleted')
 
     return redirect(url_for("index"))
+
+def search_by_keyword():
+youtube = build(
+  YOUTUBE_API_SERVICE_NAME,
+  YOUTUBE_API_VERSION,
+  developerKey=API_KEY
+)
+search_response = youtube.search().list(
+  q=QUERY_TERM,
+  part="id,snippet",
+  maxResults=25
+).execute()
+
+videos = []
+
+for search_result in search_response.get("items", []):
+if search_result["id"]["kind"] == "youtube#video":
+        videos.append("%s (%s)" % (search_result["snippet"]["title"],
+                                   search_result["id"]["videoId"]))
+return videos
 
 if __name__ == "__main__":
     app.run(debug=True)

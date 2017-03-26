@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug import generate_password_hash, check_password_hash
 
+
 db = SQLAlchemy()
 
 
@@ -35,4 +36,3 @@ class Post(db.Model):
     def __init__(self, title, body):
         self.title = title()  # something not working here
         self.body = body()  # something not working here
-
