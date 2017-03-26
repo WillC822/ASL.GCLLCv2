@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 from models import db, User, Post
 from forms import SignupForm, LoginForm
-from quickstart import get_credentials, main
+
 
 
 
@@ -108,25 +108,6 @@ def delete(uid):
 
     return redirect(url_for("index"))
 
-def search_by_keyword():
-youtube = build(
-  YOUTUBE_API_SERVICE_NAME,
-  YOUTUBE_API_VERSION,
-  developerKey=API_KEY
-)
-search_response = youtube.search().list(
-  q=QUERY_TERM,
-  part="id,snippet",
-  maxResults=25
-).execute()
-
-videos = []
-
-for search_result in search_response.get("items", []):
-if search_result["id"]["kind"] == "youtube#video":
-        videos.append("%s (%s)" % (search_result["snippet"]["title"],
-                                   search_result["id"]["videoId"]))
-return videos
 
 if __name__ == "__main__":
     app.run(debug=True)
