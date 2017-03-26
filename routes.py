@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 from models import db, User, Post
 from forms import SignupForm, LoginForm
+from quickstart import get_credentials, main
 
 
 
