@@ -4,8 +4,6 @@ from forms import SignupForm, LoginForm
 from quickstart import get_credentials, main
 
 
-
-
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/globalconcepts'
